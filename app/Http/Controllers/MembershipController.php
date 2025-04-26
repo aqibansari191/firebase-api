@@ -22,7 +22,7 @@ class MembershipController extends Controller
             'fcm_token' => 'nullable|string|max:255',
             'hero_image_url' => 'nullable|string|max:255',
             'custom_id' => 'nullable|string|max:255',
-            'is_food_without_stay' => 'nullable|boolean', // Allow nullable and handle default in the controller
+            'is_food_without_stay' => 'nullable|boolean',
             'more_info' => 'nullable|string|max:1000',
             'no_of_coupons' => 'nullable|integer|min:1',
             'offers' => 'nullable|string|max:1000',
@@ -54,7 +54,7 @@ class MembershipController extends Controller
             'fcm_token' => $request->fcm_token,
             'hero_image_url' => $request->hero_image_url,
             'custom_id' => $request->custom_id,
-            'is_food_without_stay' => $isFoodWithoutStay, // Use the determined value (either true/false)
+            'is_food_without_stay' => $isFoodWithoutStay,
             'more_info' => $request->more_info,
             'no_of_coupons' => $request->no_of_coupons,
             'offers' => $request->offers,
@@ -90,7 +90,6 @@ class MembershipController extends Controller
     }
     public function index()
     {
-
         $memberships = membershipModel::all();
         if ($memberships->isEmpty()) {
             return response()->json([
