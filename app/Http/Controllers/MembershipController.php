@@ -7,6 +7,7 @@ use App\Models\membershipModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+
 class MembershipController extends Controller
 {
     public function store(Request $request)
