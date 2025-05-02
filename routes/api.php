@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrdersController;
@@ -19,6 +20,11 @@ Route::post('/membership', [MembershipController::class, 'store']);
 Route::get('/membership/{id}', [MembershipController::class, 'show']);
 Route::get('/allmembership', [MembershipController::class, 'index']);
 
+Route::post('/partner', [PartnerController::class, 'storePartner']);
+Route::post('/partner-login', [PartnerController::class, 'login']);
+
+Route::post('/brand', [PartnerController::class, 'storeBrand']);
+
 Route::post('/groups', [HomeController::class, 'store']);
 Route::get('/groups', [HomeController::class, 'getAllData']);
 Route::get('/groups/{id}', [HomeController::class, 'getSingleData']);
@@ -26,6 +32,4 @@ Route::get('/groups/{id}', [HomeController::class, 'getSingleData']);
 Route::post('/orders', [OrdersController::class, 'insertOrder']);
 Route::get('/GetAllOrders', [OrdersController::class, 'getAllOrders']);
 Route::get('/getSingleOrder/{id}', [OrdersController::class, 'getSingleOrder']);
-
-
 
