@@ -4,9 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandsTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
@@ -28,10 +31,14 @@ class CreateBrandsTable extends Migration
             $table->foreignId('partner_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
+
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::dropIfExists('brands');
     }
-}
+};
