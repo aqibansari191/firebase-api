@@ -76,8 +76,6 @@ class PartnerController extends Controller
     }
 
 
-
-
     public function storeBrand(Request $request)
     {
         $validator = Validator::make($request->all(), [
