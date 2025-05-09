@@ -65,9 +65,14 @@ class userController extends Controller
                 'message' => 'Invalid email or password.',
             ], 401);
         }
+
+        $token = $user->createToken('santum_token')->plainTextToken;
+
         return response()->json([
             'status' => true,
             'message' => 'Login successful',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
             'data' => $user,
         ]);
     }

@@ -2,10 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class userModel extends Model
+class userModel extends Authenticatable
 {
+    use HasApiTokens, Notifiable;
+
     protected $table = 'users';
     protected $primaryKey = 'user_id';
 
@@ -25,6 +29,7 @@ class userModel extends Model
         'status',
         'type'
     ];
+
     protected $hidden = [
         'password',
     ];
