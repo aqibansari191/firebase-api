@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('signup', [userController::class, 'authentication']);
 Route::post('/login', [userController::class, 'login']);
 
-Route::post('/membership', [MembershipController::class, 'store']);
-Route::get('/membership/{id}', [MembershipController::class, 'show']);
-Route::get('/allmembership', [MembershipController::class, 'index']);
+Route::group(['middleware' => "auth:sanctum"], function () {
+    Route::post('/membership', [MembershipController::class, 'store']);
+    Route::get('/membership/{id}', [MembershipController::class, 'show']);
+    Route::get('/allmembership', [MembershipController::class, 'index']);
+});
+
 
 Route::post('/partner', [PartnerController::class, 'storePartner']);
 Route::post('/partner-login', [PartnerController::class, 'login']);
@@ -32,4 +35,3 @@ Route::get('/groups/{id}', [HomeController::class, 'getSingleData']);
 Route::post('/orders', [OrdersController::class, 'insertOrder']);
 Route::get('/GetAllOrders', [OrdersController::class, 'getAllOrders']);
 Route::get('/getSingleOrder/{id}', [OrdersController::class, 'getSingleOrder']);
-
