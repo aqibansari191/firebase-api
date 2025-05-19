@@ -10,7 +10,6 @@ class Brand extends Model
     // public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'name',
         'logo_url',
         'image',

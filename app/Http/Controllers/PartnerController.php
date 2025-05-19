@@ -78,7 +78,7 @@ class PartnerController extends Controller
 
 
 
-    public function storeBrand(Request $request)
+  public function storeBrand(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'brand_name'   => 'required|string|max:255',
@@ -130,5 +130,62 @@ class PartnerController extends Controller
             'message' => 'Brand inserted successfully!',
             'brand' => $brand
         ]);
+    }
+
+
+    public function getAllBrands()
+    {
+        $brands = Brand::all();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'All brands fetched successfully.',
+            'data' => $brands
+        ]);
+    }
+
+
+    public function getSingleBrand($id)
+    {
+        $brand = Brand::find($id);
+
+        if ($brand) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Brand found.',
+                'data' => $brand
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Brand not found.'
+            ], 404);
+        }
+    }
+
+    public function getAllPartners()
+    {
+        $partners = Partner::all();
+        return response()->json([
+            'status' => true,
+            'data' => $partners
+        ]);
+    }
+
+    public function getSinglePartner($id)
+    {
+        $partner = Partner::find($id);
+
+        if ($partner) {
+            return response()->json([
+                'status' => true,
+                'data' => $partner
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Partner not found'
+            ], 404);
+        }
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('partners', function (Blueprint $table) {
-            $table->dropColumn('password'); // Remove the password column if rollback
+            $table->dropColumn('password');
         });
     }
 };
